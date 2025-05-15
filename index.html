@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Invitación de Boda – Brandon y Anahí</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Cursiva elegante para encabezados y serif para cuerpo -->
+  <link href="https://fonts.googleapis.com/css2?family=Allura&family=Lora:wght@400;700&display=swap" rel="stylesheet">
+  <!-- FontAwesome para íconos -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-ku80FW1ZYoMlPpyH4NqiOI0hPRDsoMwKgRzxxdTlsENemPnhxIw7fprJRTdvj7EUYloFGoy57c77fT0VUn0hg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    #vestimenta {
+  text-align: center;
+  padding: 40px 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  margin: 40px auto;
+  max-width: 600px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.vestimenta-contenido {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.animacion-vestimenta {
+  margin-bottom: 20px;
+}
+
+#vestimenta h2 {
+  font-size: 2em;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+#vestimenta p {
+  font-size: 1.1em;
+  color: #555;
+  max-width: 500px;
+}
+
+    #confirmacion {
+  text-align: center;
+  padding: 40px 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  margin: 40px auto;
+  max-width: 600px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.confirmacion-contenido {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.animacion-confirmacion {
+  margin-bottom: 20px;
+}
+
+#confirmacion h2 {
+  font-size: 2em;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+#confirmacion p {
+  font-size: 1.1em;
+  color: #555;
+  max-width: 500px;
+}
+
+  :root {
+    --font-size: 18px;
+    --font-heading: 'Allura', cursive;
+    --font-body: 'Lora', serif;
+    --text-color: #333;
+    --bg-color: #fff;
+    --accent: #000;    /* texto de acento ahora negro */
+    --shadow: rgba(0,0,0,0.15);
+    --spacing: 60px;
+    --carousel-width: 600px;
+    --visible-slides: 1;
+    --slide-gap: 0px;
+    --accent-font-size: 2.2em;    /* tamaño para textos con color de acento */
+    --divider-width: 60%;         /* ancho de la línea divisoria */
+}
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:var(--font-body); font-size:var(--font-size); color:var(--text-color); background:var(--bg-color); }
+  #toggle-menu { position:fixed; top:20px; left:20px; background:none; border:none; font-size:1.5em; color:var(--text-color); cursor:pointer; z-index:1001; }
+  #sidebar { position:fixed; top:0; left:-220px; width:200px; height:100%; background:var(--bg-color); box-shadow:2px 0 10px var(--shadow); transition:left .3s ease; z-index:1000; }
+  #sidebar.open { left:0; }
+  #sidebar nav { padding:60px 0; display:flex; flex-direction:column; }
+  #sidebar a { padding:15px; font-size:1.1em; color:var(--text-color); text-decoration:none; transition:background .2s; }
+  #sidebar a:hover { background:var(--shadow); }
+  main, footer { max-width:800px; margin:0 auto; padding:0 20px; }
+  h1,h2,h3 {
+    font-family:var(--font-heading);
+    color:var(--accent);
+    text-align:center;
+    margin-bottom:20px;
+    font-size: var(--accent-font-size);  /* usa tamaño de acento */
+}
+
+  p, ul { margin-bottom:var(--spacing); line-height:1.6; }
+  p.intro { text-align:center; font-size:1.2em; }
+  ul { list-style:none; padding-left:0; }
+  ul li { position:relative; padding-left:1.5em; margin-bottom:0.5em; }
+  ul li:before { content:'•'; position:absolute; left:0; color:var(--accent); }
+  section { padding-top:var(--spacing); }
+  .header-divider {
+    width: var(--divider-width);   /* línea más ancha */
+    height:2px;
+    background:var(--accent);
+    margin:0 auto var(--spacing);
+}
+
+  .foto-principal { width:100%; border-radius:8px; box-shadow:0 4px 8px var(--shadow); margin-bottom:var(--spacing); }
+  .biblia { font-style:italic; text-align:center; font-size:1.1em; max-width:700px; margin:0 auto var(--spacing); }
+  #countdown { display:flex; justify-content:center; gap:20px; }
+  #countdown span { font-size:2.5em; }
+  ul#itinerario { list-style:disc inside; }
+  #votos p, #vestimenta p { font-size:1.1em; }
+  .mapas-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-bottom:var(--spacing); }
+  iframe { width:100%; height:250px; border:none; border-radius:8px; }
+  /* Carrusel ajustado */
+  .carousel {
+    /* Tamaño ajustado sin transformar: ancho y altura relativas */
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto var(--spacing);
+    overflow: hidden;
+    position: relative;
+    /* Control de altura máximo al 75% del original (aprox.) */
+    max-height: 75vh;         /* limita altura a 75% de la ventana */
+}
+
+
+
+  .carousel-track { display:flex; transition:transform .5s ease; }
+  .carousel-image {
+    flex: 0 0 100%;      /* cada slide ocupa todo el ancho del track */
+    opacity: 0.5;
+    transition: opacity .5s ease, transform .5s ease;
+    width: 100%;         /* imagen responsiva */
+    height: auto;
+    object-fit: cover;
+}
+
+.carousel-image.active {
+    opacity: 1;
+    transform: scale(1.02);
+}
+
+  .carousel-image.active { opacity:1; }
+  .carousel-btn { position:absolute; top:50%; transform:translateY(-50%); background:rgba(255,255,255,0.8); border:none; font-size:1.2em; padding:0.5em; cursor:pointer; z-index:1; }
+  .prev { left:5px; }
+  .next { right:5px; }
+  footer { text-align:center; padding:var(--spacing) 0; font-size:0.9em; color:#666; border-top:1px solid var(--shadow); }
+  footer a { color:var(--accent); text-decoration:none; }
+  @media(max-width:600px){ .mapas-grid { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+  <button id="toggle-menu" aria-label="Abrir menú"><i class="fas fa-bars"></i></button>
+  <aside id="sidebar">
+    <nav>
+      <a href="#inicio"><i class="fas fa-home"></i> Inicio</a>
+      <a href="#imagen-biblia"><i class="fas fa-book-open"></i> Biblia</a>
+      <a href="#cronometro"><i class="fas fa-clock"></i> Cronómetro</a>
+      <a href="#itinerario"><i class="fas fa-list"></i> Itinerario</a>
+      <a href="#votos"><i class="fas fa-heart"></i> Votos</a>
+      <a href="#vestimenta"><i class="fas fa-user-tie"></i> Vestimenta</a>
+      <a href="#galeria"><i class="fas fa-camera"></i> Galería</a>
+      <a href="#mapas"><i class="fas fa-map-marker-alt"></i> Mapas</a>
+      <a href="#confirmacion"><i class="fas fa-check"></i> Confirmación</a>
+    </nav>
+  </aside>
+  <main>
+    <section id="inicio">
+      <h1>Brandon y Anahí</h1>
+      <div class="header-divider"></div>
+      <p class="intro">¡Nos complace invitarlos a compartir con nosotros este día tan especial lleno de amor y alegría!</p>
+    </section>
+    <section id="imagen-biblia">
+      <img src="imagen6.jpg" alt="Pareja feliz" class="foto-principal">
+      <p class="biblia">“Las aguas embravecidas no pueden extinguir el amor, ni pueden los ríos llevárselo con la corriente.”<br><small>(Cantar de los Cantares 8:7)</small></p>
+    </section>
+    <section id="cronometro">
+      <h2>Cronómetro</h2>
+      <div id="countdown">
+        <div><span id="days">00</span><br>Días</div>
+        <div><span id="hours">00</span><br>Horas</div>
+        <div><span id="minutes">00</span><br>Minutos</div>
+        <div><span id="seconds">00</span><br>Segundos</div>
+      </div>
+    </section>
+    <section id="itinerario">
+      <h2>Itinerario</h2>
+      <ul id="itinerario">
+        <li>5:30 PM – Discurso Público</li>
+        <li>7:00 PM – Recepción</li>
+      </ul>
+    </section>
+    <section id="votos">
+      <h2>Votos</h2>
+      <p>Prometemos amarnos mutuamente con paciencia, respeto y ternura, honrando siempre nuestros corazones.</p>
+    </section>
+    <section id="vestimenta">
+      <section id="vestimenta">
+  <h2>Código de Vestimenta</h2>
+  <div class="vestimenta-contenido">
+    <div class="animacion-vestimenta">
+      <!-- Animación de vestimenta -->
+      <lottie-player
+        src="https://assets9.lottiefiles.com/packages/lf20_tnrzlN.json"
+        background="transparent"
+        speed="1"
+        style="width: 150px; height: 150px;"
+        autoplay
+      ></lottie-player>
+    </div>
+    <p>
+      Para este evento especial, te invitamos a vestir con elegancia y estilo.
+      <br/>
+      Mujeres: Vestidos largos o de cóctel.
+      <br/>
+      Hombres: Traje formal o esmoquin.
+    </p>
+  </div>
+</section>
+      <h2>Vestimenta</h2>
+      <p>Se recomienda traje formal o vestido elegante.</p>
+    </section>
+    <section id="galeria">
+      <h2>Galería</h2>
+      <div class="carousel">
+        <button class="carousel-btn prev"><i class="fas fa-chevron-left"></i></button>
+        <div class="carousel-track">
+          <img src="imagen1.jpg" class="carousel-image" alt="Foto 1">
+          <img src="imagen2.jpg" class="carousel-image" alt="Foto 2">
+          <img src="imagen3.jpg" class="carousel-image" alt="Foto 3">
+          <img src="imagen4.jpg" class="carousel-image" alt="Foto 4">
+          <img src="imagen5.jpg" class="carousel-image" alt="Foto 5">
+        </div>
+        <button class="carousel-btn next"><i class="fas fa-chevron-right"></i></button>
+      </div>
+    </section>
+    <section id="mapas">
+      <h2>Ubicaciones</h2>
+      <div class="mapas-grid">
+        <div>
+          <h3>Salón del Reino</h3>
+          <iframe src="https://maps.google.com/maps?q=31.683611,-106.358333&z=15&output=embed"></iframe>
+          <p class="map-label">Calle Principal: Av. del Amor #123<br/>Colonia: Jardines de Esperanza<br/>Ciudad: Ciudad Juárez, Chihuahua<br/>Código Postal: 32450</p>
+        </div>
+        <div>
+          <h3>Salón de Bodas</h3>
+          <iframe src="https://maps.google.com/maps?q=31.644444,-106.398333&z=15&output=embed"></iframe>
+          <p class="map-label">Calle Principal: Av. de la Celebración #456<br/>Colonia: Lomas de la Alegría<br/>Ciudad: Ciudad Juárez, Chihuahua<br/>Código Postal: 32460</p>
+        </div>
+      </div>
+    </section>
+    <section id="confirmacion">
+      <h2>Confirmación</h2>
+      <p>Confirma llamando o enviando mensaje:<br><a href="tel:+526563549772">Brandon</a> | <a href="tel:+526561093450">Anahí</a></p>
+    </section>
+    <section id="confirmacion">
+  <h2>¡Confirmación Exitosa!</h2>
+  <div class="confirmacion-contenido">
+    <div class="animacion-confirmacion">
+      <!-- Animación de checkmark -->
+      <lottie-player
+        src="https://assets5.lottiefiles.com/packages/lf20_jbrw3hcz.json"
+        background="transparent"
+        speed="1"
+        style="width: 150px; height: 150px;"
+        autoplay
+      ></lottie-player>
+    </div>
+    <p>Gracias por confirmar tu asistencia. ¡Esperamos verte en el evento!</p>
+  </div>
+</section>
+
+  </main>
+  <footer>
+    &copy; <span id="year"></span> Brandon y Anahí. | <a href="#">Política de Privacidad</a> | <a href="#">Términos de Uso</a>
+  </footer>
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
+  <script>
+    
+    // Toggle menú
+    document.getElementById('toggle-menu').addEventListener('click', () => document.getElementById('sidebar').classList.toggle('open'));
+    // Año dinámico
+    document.getElementById('year').textContent = new Date().getFullYear();
+    // Carrusel
+    const track = document.querySelector('.carousel-track');
+    const slides = Array.from(track.children);
+    const btnPrev = document.querySelector('.prev');
+    const btnNext = document.querySelector('.next');
+    const slideW = slides[0].getBoundingClientRect().width;
+    let idx = 0;
+    slides.forEach((s,i)=> s.style.left = `${slideW * i}px`);
+    function update(){ track.style.transform = `translateX(-${slideW * idx}px)`; slides.forEach((s,i)=> s.classList.toggle('active', i===idx)); }
+    btnPrev.addEventListener('click', ()=>{ idx = (idx - 1 + slides.length) % slides.length; update(); });
+    btnNext.addEventListener('click', ()=>{ idx = (idx + 1) % slides.length; update(); });
+    update(); setInterval(()=>{ idx = (idx + 1) % slides.length; update(); }, 3000);
+  </script>
+</body>
+</html>

@@ -1,0 +1,263 @@
+:root {
+  /* Variables principales para fácil personalización */
+  --font-size: 20px;               /* Tamaño base de fuente */
+  --font-family: 'Lovers Quarrel', cursive; /* Fuente cursiva principal */
+  --text-color: #000;              /* Color de texto */
+  --bg-color: #fff;                /* Color de fondo */
+  --shadow-color: rgba(0,0,0,0.2); /* Color sombra */
+  --font-weight-normal: 400;       /* Peso de fuente normal */
+  --font-weight-title: 600;        /* Peso de fuente para títulos */
+}
+
+/* Reset global y familia tipográfica */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-normal);
+}
+
+body {
+  font-size: var(--font-size);
+  color: var(--text-color);
+  background: var(--bg-color);
+  text-align: center;
+}
+
+/* ===================== Menú lateral ===================== */
+#toggle-menu {
+  /* Botón para abrir/cerrar menú */
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background: none;
+  border: none;
+  font-size: 1.5em;
+  color: var(--text-color);
+  cursor: pointer;
+  z-index: 1001;
+}
+#sidebar {
+  /* Menú oculto por defecto */
+  position: fixed;
+  top: 0;
+  left: -220px;
+  width: 200px;
+  height: 100%;
+  background: var(--bg-color);
+  box-shadow: 2px 0 10px var(--shadow-color);
+  transition: left 0.3s ease;
+  z-index: 1000;
+}
+#sidebar.open {
+  /* Clase open muestra el menú */
+  left: 0;
+}
+#sidebar nav {
+  /* Contenedor de enlaces */
+  padding: 60px 0;
+  display: flex;
+  flex-direction: column;
+}
+#sidebar a {
+  /* Estilo de cada enlace */
+  padding: 15px;
+  font-size: 1.1em;
+  color: var(--text-color);
+  text-decoration: none;
+  transition: background 0.2s;
+}
+#sidebar a:hover {
+  background: var(--shadow-color);
+}
+
+/* ===================== Encabezado ===================== */
+#inicio h1 {
+  /* Título principal grande y en cursiva */
+  font-size: 5em;
+  color: var(--text-color);
+  font-weight: var(--font-weight-title);
+}
+.header-divider {
+  /* Línea fina con sombra */
+  width: 50%;
+  height: 2px;
+  background: var(--text-color);
+  margin: 10px auto 20px;
+  box-shadow: 0 2px 4px var(--shadow-color);
+}
+#inicio p {
+  /* Subtítulo/ frase de bienvenida */
+  font-size: 2.5em;
+  margin-bottom: 40px;
+}
+
+/* ===================== Imagen Bíblica ===================== */
+.foto-principal {
+  /* Imagen principal al 60% ancho */
+  width: 60%;
+  max-width: 800px;
+  margin: 0 auto 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px var(--shadow-color);
+}
+.biblia {
+  /* Texto bíblico en cursiva legible */
+  font-size: 2.5em;
+  margin-bottom: 40px;
+  font-weight: var(--font-weight-normal);
+}
+
+/* ===================== Cronómetro ===================== */
+#cronometro h2 {
+  font-weight: var(--font-weight-title);
+  margin-bottom: 15px;
+}
+#countdown {
+  display: flex;
+  justify-content: center;
+  gap: 40px;          /* Ajusta espacio entre bloques */
+  margin-bottom: 40px;
+}
+#countdown div {
+  text-align: center;
+}
+#countdown span {
+  font-size: 4em;      /* Números grandes */
+  display: block;
+  line-height: 1;
+}
+#countdown small {
+  font-size: 1.5em;    /* Etiquetas legibles */
+  display: block;
+  margin-top: 5px;
+}
+
+/* ===================== Itinerario & Votos ===================== */
+#itinerario h2 {
+  font-weight: var(--font-weight-title);
+}
+#itinerario ul {
+  list-style: none;
+  margin-bottom: 40px;
+}
+#itinerario li {
+  font-size: 1.5em;
+  margin: 10px 0;
+  font-weight: var(--font-weight-normal);
+}
+#votos h2 {
+  font-weight: var(--font-weight-title);
+}
+#votos p {
+  font-size: 1.5em;
+  margin-bottom: 40px;
+  font-weight: var(--font-weight-normal);
+}
+
+/* ===================== Vestimenta ===================== */
+#vestimenta h2 {
+  font-weight: var(--font-weight-title);
+  margin-bottom: 20px;
+  font-size: 2em;
+}
+#vestimenta p {
+  font-size: 2em;
+  font-weight: var(--font-weight-normal);
+}
+
+/* ===================== Carrusel ===================== */
+/* ================= Carrusel 3-imágenes con efecto 3D ligero ================ */
+.carousel {
+  position: relative;
+  width: 80%; 
+  max-width: 700px;
+  margin: 0 auto 40px;
+  overflow: hidden;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.6s ease;
+  will-change: transform;
+}
+
+/* Base para cada imagen: ocupa 1/3 del ancho, un poco borrosa y pequeña */
+.carousel-image {
+  flex: 0 0 33.333%;
+  opacity: 0.5;
+  filter: blur(2px);
+  transform: scale(0.8);
+  transition: transform 0.6s ease, opacity 0.6s ease, filter 0.6s ease;
+}
+
+/* Estado “activo”: centrada, nítida y a tamaño completo */
+.carousel-image.active {
+  opacity: 1;
+  filter: none;
+  transform: scale(1);
+}
+
+/* Botones */
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,0.7);
+  border: none;
+  font-size: 1.5em;
+  padding: 0.5em;
+  cursor: pointer;
+  z-index: 2;
+}
+.carousel-btn.prev { left: 10px; }
+.carousel-btn.next { right: 10px; }
+
+
+/* ===================== Mapas ===================== */
+#mapas h2 {
+  font-weight: var(--font-weight-title);
+}
+.mapas-grid {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin: 40px 0;
+}
+.mapas-grid iframe {
+  width: 350px;
+  height: 350px;
+  border: none;
+}
+
+/* ===================== Confirmación ===================== */
+#confirmacion h2 {
+  font-weight: var(--font-weight-title);
+}
+#confirmacion p {
+  font-size: 1.5em;
+}
+#confirmacion a {
+  display: block;
+  margin: 10px 0;
+  font-size: 1.5em;
+  text-decoration: none;
+  color: var(--text-color);
+}
+
+/* ===================== Footer ===================== */
+footer p {
+  font-weight: var(--font-weight-normal);
+}
+footer a {
+  text-decoration: none;
+  color: var(--text-color);
+  margin: 0 5px;
+}
+
+/* ===================== Responsive ===================== */
+@media (max-width: 768px) {
+  .foto-principal { width: 80%; }
+  .mapas-grid { flex-direction: column; }
+}
