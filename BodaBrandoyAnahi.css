@@ -14,7 +14,7 @@ body { font-family:var(--font-body); font-size:var(--font-size); color:var(--tex
 main, footer { max-width:800px; margin:0 auto; padding:0 20px; }
 h1 { font-family:var(--font-heading); color:var(--accent); text-align:center; margin-bottom:20px; font-size:2em; font-weight:bold; }
 h2,h3 { font-family:var(--font-heading); color:var(--accent); text-align:center; margin-bottom:20px; font-size:1.7em; font-weight: bold; }
-p.intro { text-align:center; font-size:.7em; margin-bottom:var(--spacing); font-weight: bold; }
+p.intro { text-align:center; font-size:.7em; margin-bottom:var(--spacing); }
 p { text-align:center; font-size:.7em; margin-bottom:var(--spacing); }
 
 /* Itinerario */
