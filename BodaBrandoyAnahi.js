@@ -81,7 +81,38 @@ if (slides.length && btnPrev && btnNext) {
     link.addEventListener('click', e => {
       e.preventDefault();
       const confirmSection = document.getElementById('confirmacion');
+const successSection = document.getElementById('confirmacion-exitosa');
+if (confirmSection) confirmSection.style.display = 'none';
+if (successSection) successSection.style.display = 'block';  // Mostrar confirmación exitosa
+
+document.addEventListener('DOMContentLoaded', () => {
+  // Obtener referencias a secciones
+  const confirmSection = document.getElementById('confirmacion');
+  const successSection = document.getElementById('confirmacion-exitosa');
+
+  // Controlador en los enlaces de contacto (Brandon y Anahí)
+  document.querySelectorAll('.contact-link').forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
       if (confirmSection) confirmSection.style.display = 'none';
+      if (successSection) successSection.style.display = 'block';
+      // Esperar brevemente y redirigir a WhatsApp
+      setTimeout(() => {
+        window.location.href = link.href;
+      }, 500);
+    });
+  });
+
+  // Controlador para “Confirmar nuevamente”
+  const btnConfirmAgain = document.getElementById('confirm-again');
+  if (btnConfirmAgain) {
+    btnConfirmAgain.addEventListener('click', e => {
+      e.preventDefault();
+      if (successSection) successSection.style.display = 'none';
+      if (confirmSection) confirmSection.style.display = 'block';
+    });
+  }
+});
 
       // Mostrar feedback
       const success = document.getElementById('confirmacion-exitosa') ||
