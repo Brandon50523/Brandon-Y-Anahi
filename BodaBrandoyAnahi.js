@@ -6,42 +6,42 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Carrusel
-  const track   = document.querySelector('.carousel-track');
-  const slides  = track ? Array.from(track.children) : [];
-  const btnPrev = document.querySelector('.prev');
-  const btnNext = document.querySelector('.next');
+ const track   = document.querySelector('.carousel-track');
+const slides  = Array.from(track.children);
+const btnPrev = document.querySelector('.prev');
+const btnNext = document.querySelector('.next');
 
-  if (slides.length && btnPrev && btnNext) {
-    const slideWidth = slides[0].getBoundingClientRect().width;
-    let currentIndex = 0;
+if (slides.length && btnPrev && btnNext) {
+  // Calculamos ancho dinámico de cada slide (incluye margin-right)
+  const style      = window.getComputedStyle(slides[0]);
+  const marginRight= parseFloat(style.marginRight);
+  const slideWidth = slides[0].getBoundingClientRect().width + marginRight;
 
-    slides.forEach((slide, idx) => {
-      slide.style.left = `${slideWidth * idx}px`;
-    });
+  let currentIndex = 0;
+  slides.forEach((slide, idx) => {
+    slide.style.left = `${slideWidth * idx}px`;
+  });
 
-    function moveTo(index) {
-      track.style.transform = `translateX(-${slideWidth * index}px)`;
-      slides.forEach((slide, i) => {
-        slide.classList.toggle('active', i === index);
-      });
-    }
-
-    btnPrev.addEventListener('click', () => {
-      currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-      moveTo(currentIndex);
-    });
-
-    btnNext.addEventListener('click', () => {
-      currentIndex = (currentIndex + 1) % slides.length;
-      moveTo(currentIndex);
-    });
-
-    moveTo(0);
-    setInterval(() => {
-      currentIndex = (currentIndex + 1) % slides.length;
-      moveTo(currentIndex);
-    }, 3000);
+  function moveTo(index) {
+    track.style.transform = `translateX(-${slideWidth * index}px)`;
+    slides.forEach((slide, i) => slide.classList.toggle('active', i === index));
   }
+
+  btnPrev.addEventListener('click', () => {
+    currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+    moveTo(currentIndex);
+  });
+  btnNext.addEventListener('click', () => {
+    currentIndex = (currentIndex + 1) % slides.length;
+    moveTo(currentIndex);
+  });
+
+  moveTo(0);
+  setInterval(() => {
+    currentIndex = (currentIndex + 1) % slides.length;
+    moveTo(currentIndex);
+  }, 3000);
+}
 
   // Countdown
   (function() {
